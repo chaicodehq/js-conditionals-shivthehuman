@@ -26,8 +26,33 @@
  * @param {number} weight - Package weight in kilograms
  * @param {string} country - Destination country code (e.g., "US", "UK", "IN")
  * @param {number} orderTotal - Total order amount in dollars
+ * 
  * @returns {number} Shipping cost, 0 for free shipping, or -1 for invalid input
  */
 export function calculateShipping(weight, country, orderTotal) {
-  // Your code here
+  
+
+  if (weight <=0 || orderTotal <0){
+    return -1;
+  }
+  
+
+  //freee shipping
+  if(country==="US" && orderTotal>50)
+    return 0;
+  if (country!=="US" && orderTotal>100)
+    return 0;
+  
+  //Domestic 
+  if (country === "US") {
+    if (weight <= 1) return 5;
+    if (weight <= 5) return 10;
+    return 15; // Over 5kg
+  } else {
+
+    // International rates
+    if (weight <= 1) return 15;
+    if (weight <= 5) return 25;
+    return 40;
+  }
 }
