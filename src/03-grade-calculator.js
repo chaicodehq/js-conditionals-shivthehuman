@@ -32,12 +32,9 @@
 //  *   - 0–59   → "F"
 
 export function calculateGrade(score, hasExtraCredit) {
-
   if (typeof score !== 'number' || score < 0 || score > 100) {
     return "INVALID";
   }
-
-
   if (hasExtraCredit === true) {
     score += 5;
     // Cap it at 100 just in case they had a 98!
@@ -45,8 +42,6 @@ export function calculateGrade(score, hasExtraCredit) {
       score = 100;
     }
   }
-
-
   let grade;
   if (score >= 90) {
     grade = "A";
@@ -59,6 +54,5 @@ export function calculateGrade(score, hasExtraCredit) {
   } else {
     grade = "F";
   }
-
   return grade;
 }
