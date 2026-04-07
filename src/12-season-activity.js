@@ -31,5 +31,77 @@
  * @returns {{ season: string, activity: string } | null}
  */
 export function getSeasonActivity(month, temperature) {
-  // Your code here
+
+  if (!Number.isInteger(month) || month < 1 || month > 12) return null;
+
+  const data = {
+    1: {month: "january", season:"Winter" },
+    2: {month: "february", season: "Winter"},
+    3: {month: "march"  , season: "Spring"},
+    4: {month: "april", season: "Spring"},
+    5: {month: "may", season: "Spring"},
+    6: {month: "june", season: "Summer"},
+    7: {month: "july", season: "Summer"},
+    8: {month: "august", season: "Summer"},
+    9: {month: "september", season: "Autumn"},
+    10:{month: "october", season: "Autumn"},
+    11:{month: "november", season: "Autumn"},
+    12:{month: "december", season: "Winter"}, 
+  }
+
+  if (!data[month]) return null;
+
+
+  let userdata = (data[month]);
+  let seasonis = userdata.season;
+
+
+  if (seasonis === "Winter" && temperature < 0) {
+    return {
+      season: seasonis,
+      activity: "skiing"
+    }
+  }
+  if (seasonis === "Winter" && temperature >= 0) {
+    return {
+      season: seasonis,
+      activity: "ice skating"
+    }
+  }
+  if (seasonis === "Spring" && temperature > 20) {
+    return {
+      season: seasonis,
+      activity: "hiking"
+    }
+  }
+  if (seasonis === "Spring" && temperature <= 20) {
+    return {
+      season: seasonis,
+      activity: "museum visit"
+    }
+  }
+  if (seasonis === "Summer" && temperature > 35) {
+    return {
+      season: seasonis,
+      activity: "swimming"
+    }
+  }
+  if (seasonis === "Summer" && temperature <= 35) {
+    return {
+      season: seasonis,
+      activity: "cycling"
+    }
+  }
+  if (seasonis === "Autumn" && temperature > 15) {
+    return {
+      season: seasonis,
+      activity: "nature walk"
+    }
+  }
+  if (seasonis === "Autumn" && temperature <= 15) {
+    return {
+      season: seasonis,
+      activity: "reading at a cafe"
+    }
+  }
 }
